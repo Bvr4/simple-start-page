@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Start Page</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+    <div>
+
+
+        {% for ligne in lignes %}
+            <br>{{ ligne.emplacement }} 
+            {% for lien in ligne.lien_set.all %}
+                <a href="{{ lien.url }}">{{ lien.nom }}</a>
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+    
+</body>
+</html>
