@@ -3,18 +3,26 @@
 <head>
     <title>Start Page</title>
     <meta charset="UTF-8">
+    <!-- bibliothèque htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
 </head>
 <body>
     
     <div>
 
-
-        {% for ligne in lignes %}
-            <br>{{ ligne.emplacement }} 
-            {% for lien in ligne.lien_set.all %}
-                <a href="{{ lien.url }}">{{ lien.nom }}</a>
+        <div id="lignes">
+            {% for ligne in lignes %}
+                {% include 'startpage/ligne.html' with ligne=ligne %}
             {% endfor %}
-        {% endfor %}
+        </div>
+        <form method="POST" class="d-flex gap-2">
+            {% csrf_token %}
+            <button hx-post="{% url 'add-ligne' %}"
+                    hx-target="#lignes"
+                    hx-swap="beforeend"
+                    type="submit">Ajouter une ligne
+            </button>
+        </form>
 
     </div>
     

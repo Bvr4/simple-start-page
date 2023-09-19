@@ -14,8 +14,8 @@ Ce projet me permet de tester la création de site via django.
     - ID_Ligne (ForeignKey)
 
 ## Fonctionnalités
-[] Créer une ligne  
-[] Supprimer une ligne 
+[x] Créer une ligne  
+[] Supprimer une ligne  
 [] Créer un lien dans une ligne  
 [] Supprimer un lien  
 [] Déplacer un lien dans une ligne (changer emplacement)  

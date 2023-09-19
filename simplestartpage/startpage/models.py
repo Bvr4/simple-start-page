@@ -4,7 +4,7 @@ class Ligne(models.Model):
     ligne_id = models.AutoField(primary_key=True)
     emplacement = models.IntegerField()
 
-    # crée une lilgne par défaut si elle n'existe pas
+    # crée une ligne par défaut si elle n'existe pas
     # @classmethod
     # def get_default_ligne(cls) -> "Ligne":
     #     ligne, _ = cls.objects.get_or_create(emplacement=0)
