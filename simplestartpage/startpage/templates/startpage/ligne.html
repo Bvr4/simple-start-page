@@ -1,5 +1,5 @@
 <br>ligne {{ ligne.emplacement }} 
-<div id="liens">
+<div id="liens-{{ ligne.emplacement }}">
     {% for lien in ligne.lien_set.all %}
         {% include 'startpage/lien.html' with lien=lien %}
     {% endfor %}
@@ -18,7 +18,7 @@
             name="url-lien" 
             placeholder="URL">
     <button hx-post="{% url 'add-lien' %}"
-            hx-target="#liens"
+            hx-target="#liens-{{ ligne.emplacement }}"
             hx-swap="beforeend"
             type="submit">Ajouter lien
     </button>

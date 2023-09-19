@@ -24,11 +24,16 @@ def add_lien(request):
     id_ligne = escape(request.POST.get("id-ligne"))
     ligne = Ligne.objects.get(ligne_id=id_ligne)
     emplacement_max = Lien.objects.filter(id_ligne=id_ligne).aggregate(Max('emplacement'))
+    # Si la ligne est vide, on initialise l'emplacement à 0
+    if emplacement_max['emplacement__max'] is None:
+        emplacement = 0
+    else:
+        emplacement = emplacement_max['emplacement__max'] + 1
     
     lien = Lien.objects.create(nom=nom, 
                                url=url, 
                                id_ligne=ligne, 
-                               emplacement=emplacement_max['emplacement__max'] + 1
+                               emplacement=emplacement
                                )
     
     return render(request, 'startpage/lien.html', context={'lien': lien})
