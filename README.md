@@ -19,5 +19,5 @@ Ce projet me permet de tester la création de site via django, ainsi que la bibl
 [x] Créer un lien dans une ligne  
 [] Editer un lien
 [x] Supprimer un lien  
-[] Déplacer un lien dans une ligne (changer emplacement)  
+[x] Déplacer un lien dans une ligne (changer emplacement)  
 [] Changer l'ordre des lignes (changer emplacement)

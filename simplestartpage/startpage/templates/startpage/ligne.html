@@ -8,7 +8,7 @@
                 type="submit"> - </button>
         </form>
         <div id="liens-{{ ligne.emplacement }}">
-                {% for lien in ligne.lien_set.all %}
+                {% for lien in ligne.lien_set.all|dictsort:"emplacement" %}
                 {% include 'startpage/lien.html' with lien=lien %}
                 {% endfor %}
         </div>

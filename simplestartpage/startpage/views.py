@@ -55,3 +55,37 @@ def delete_ligne(request, ligne_pk):
     ligne.delete()
 
     return HttpResponse("")
+
+
+def move_lien_up(request, lien_pk):
+    # On récupère l'enregistrement du lien en question
+    lien = Lien.objects.get(pk=lien_pk)
+
+    # On récupère l'enregistrement ayant l'emplacement juste au dessus
+    lien_sup = Lien.objects.filter(id_ligne=lien.id_ligne).order_by("-emplacement").filter(emplacement__lt = lien.emplacement)[0]
+
+    lien.emplacement, lien_sup.emplacement = lien_sup.emplacement, lien.emplacement
+    lien.save()
+    lien_sup.save()
+
+    ligne = Ligne.objects.get(pk=lien.id_ligne_id)
+
+    # On retourne toute la ligne mise à jour. (peut être moyen de faire mieux ?)
+    return render(request, 'startpage/ligne.html', context={'ligne': ligne})
+
+
+def move_lien_down(request, lien_pk):
+    # On récupère l'enregistrement du lien en question
+    lien = Lien.objects.get(pk=lien_pk)
+
+    # On récupère l'enregistrement ayant l'emplacement juste en dessous
+    lien_sup = Lien.objects.filter(id_ligne=lien.id_ligne).order_by("emplacement").filter(emplacement__gt = lien.emplacement)[0]
+
+    lien.emplacement, lien_sup.emplacement = lien_sup.emplacement, lien.emplacement
+    lien.save()
+    lien_sup.save()
+
+    ligne = Ligne.objects.get(pk=lien.id_ligne_id)
+
+    # On retourne toute la ligne mise à jour. (peut être moyen de faire mieux ?)
+    return render(request, 'startpage/ligne.html', context={'ligne': ligne})
