@@ -1,25 +1,34 @@
-<br>ligne {{ ligne.emplacement }} 
-<div id="liens-{{ ligne.emplacement }}">
-    {% for lien in ligne.lien_set.all %}
-        {% include 'startpage/lien.html' with lien=lien %}
-    {% endfor %}
+<div class="container-ligne">
+        <br>ligne {{ ligne.emplacement }} 
+        <form>
+                {% csrf_token %}
+                <button hx-post="{% url 'delete-ligne' ligne.pk %}"
+                hx-target="closest .container-ligne"
+                hx-swap="outerHTML"
+                type="submit"> - </button>
+        </form>
+        <div id="liens-{{ ligne.emplacement }}">
+                {% for lien in ligne.lien_set.all %}
+                {% include 'startpage/lien.html' with lien=lien %}
+                {% endfor %}
+        </div>
+
+        <form method="POST" class="d-flex gap-2 mt-2">
+                {% csrf_token %}
+
+                <input  type="hidden" 
+                        name="id-ligne" 
+                        value="{{ ligne.ligne_id }}">
+                <input  type="text" 
+                        name="nom-lien" 
+                        placeholder="Nom">
+                <input  type="text" 
+                        name="url-lien" 
+                        placeholder="URL">
+                <button hx-post="{% url 'add-lien' %}"
+                        hx-target="#liens-{{ ligne.emplacement }}"
+                        hx-swap="beforeend"
+                        type="submit">Ajouter lien
+                </button>
+        </form>
 </div>
-
-<form method="POST" class="d-flex gap-2 mt-2">
-    {% csrf_token %}
-
-    <input  type="hidden" 
-            name="id-ligne" 
-            value="{{ ligne.ligne_id }}">
-    <input  type="text" 
-            name="nom-lien" 
-            placeholder="Nom">
-    <input  type="text" 
-            name="url-lien" 
-            placeholder="URL">
-    <button hx-post="{% url 'add-lien' %}"
-            hx-target="#liens-{{ ligne.emplacement }}"
-            hx-swap="beforeend"
-            type="submit">Ajouter lien
-    </button>
-</form>

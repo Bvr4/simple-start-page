@@ -1,1 +1,8 @@
-<a href="{{ lien.url }}">{{ lien.nom }}</a>
+<form>
+    {% csrf_token %}
+    <a href="{{ lien.url }}">{{ lien.nom }}</a>
+    <button hx-post="{% url 'delete-lien' lien.pk %}"
+    hx-target="closest form"
+    hx-swap="outerHTML"
+    type="submit"> - </button>
+</form>
