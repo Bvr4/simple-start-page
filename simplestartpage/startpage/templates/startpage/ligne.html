@@ -31,4 +31,8 @@
                         type="submit">Ajouter lien
                 </button>
         </form>
+
+        <a href="{% url 'move-ligne-up' ligne.pk %}">move ligne up</a>
+        <a href="{% url 'move-ligne-down' ligne.pk %}">move ligne down</a>
+
 </div>

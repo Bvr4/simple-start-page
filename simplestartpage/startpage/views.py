@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.html import escape
 from django.db.models import Max
 
@@ -89,6 +89,36 @@ def move_lien_down(request, lien_pk):
 
     # On retourne toute la ligne mise à jour. (peut être moyen de faire mieux ?)
     return render(request, 'startpage/ligne.html', context={'ligne': ligne})
+
+
+def move_ligne_up(request, ligne_pk):
+    # On récupère l'enregistrement du ligne en question
+    ligne = Ligne.objects.get(pk=ligne_pk)
+
+    # On récupère l'enregistrement ayant l'emplacement juste au dessus
+    ligne_sup = Ligne.objects.order_by("-emplacement").filter(emplacement__lt = ligne.emplacement)[0]
+
+    ligne.emplacement, ligne_sup.emplacement = ligne_sup.emplacement, ligne.emplacement
+    ligne.save()
+    ligne_sup.save()
+
+    # On raffraichit la page. (peut être moyen de faire mieux ?)
+    return redirect('home')
+
+
+def move_ligne_down(request, ligne_pk):
+    # On récupère l'enregistrement du ligne en question
+    ligne = Ligne.objects.get(pk=ligne_pk)
+
+    # On récupère l'enregistrement ayant l'emplacement juste en dessous
+    ligne_sup = Ligne.objects.order_by("emplacement").filter(emplacement__gt = ligne.emplacement)[0]
+
+    ligne.emplacement, ligne_sup.emplacement = ligne_sup.emplacement, ligne.emplacement
+    ligne.save()
+    ligne_sup.save()
+
+    # On raffraichit la page. (peut être moyen de faire mieux ?)
+    return redirect('home')
 
 
 def edit_lien(request, lien_pk):

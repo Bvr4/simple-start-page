@@ -20,4 +20,7 @@ Ce projet me permet de tester la création de site via django, ainsi que la bibl
 [x] Editer un lien
 [x] Supprimer un lien  
 [x] Déplacer un lien dans une ligne (changer emplacement)  
-[] Changer l'ordre des lignes (changer emplacement)
+[x] Changer l'ordre des lignes (changer emplacement)
+
+## TODO : 
+[] front end

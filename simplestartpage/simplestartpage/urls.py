@@ -10,6 +10,8 @@ urlpatterns = [
     path('delete-ligne/<int:ligne_pk>', views.delete_ligne, name='delete-ligne'),
     path('move-lien-up/<int:lien_pk>', views.move_lien_up, name='move-lien-up'),
     path('move-lien-down/<int:lien_pk>', views.move_lien_down, name='move-lien-down'),
+    path('move-ligne-up/<int:ligne_pk>', views.move_ligne_up, name='move-ligne-up'),
+    path('move-ligne-down/<int:ligne_pk>', views.move_ligne_down, name='move-ligne-down'),
     path('edit-lien/<int:lien_pk>', views.edit_lien, name='edit-lien'),
     path('lien/<int:lien_pk>', views.lien, name='lien'),
     path('admin/', admin.site.urls),
