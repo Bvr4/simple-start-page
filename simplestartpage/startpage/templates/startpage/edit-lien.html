@@ -1,0 +1,13 @@
+<form hx-post="/lien/{{ lien.pk }}" hx-target="this" hx-swap="outerHTML">
+    {% csrf_token %}
+    <div>
+      <label>Nom</label>
+      <input type="text" name="nom-lien" value="{{ lien.nom }}">
+    </div>
+    <div class="form-group">
+      <label>URL</label>
+      <input type="text" name="url-lien" value="{{ lien.url }}">
+    </div>
+    <button class="btn">Submit</button>
+    <button class="btn" hx-get="/lien/{{ lien.pk }}">Cancel</button>
+</form>

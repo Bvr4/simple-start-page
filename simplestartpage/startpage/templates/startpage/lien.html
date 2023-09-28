@@ -1,22 +1,9 @@
-<form>
-    {% csrf_token %}
-    <a href="{{ lien.url }}">{{ lien.nom }}</a>
-    <button hx-post="{% url 'delete-lien' lien.pk %}"
-    hx-target="closest form"
-    hx-swap="outerHTML"
-    type="submit"> - </button>
-</form>
-<form>
-    {% csrf_token %}
-    <button hx-post="{% url 'move-lien-up' lien.pk %}"
-    hx-target="closest .container-ligne"
-    hx-swap="outerHTML"
-    type="submit">move up</button>
-</form>
-<form>
-    {% csrf_token %}
-    <button hx-post="{% url 'move-lien-down' lien.pk %}"
-    hx-target="closest .container-ligne"
-    hx-swap="outerHTML"
-    type="submit">move down</button>
-</form>
+<div hx-target="this" hx-swap="outerHTML">
+    <form>
+        {% csrf_token %}
+        <a href="{{ lien.url }}">{{ lien.nom }}</a>
+        <button hx-get="/edit-lien/{{ lien.pk }}" class="btn btn-primary">
+        Edit
+        </button>
+    </form>
+</div>

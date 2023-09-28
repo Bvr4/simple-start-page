@@ -9,7 +9,7 @@
         </form>
         <div id="liens-{{ ligne.emplacement }}">
                 {% for lien in ligne.lien_set.all|dictsort:"emplacement" %}
-                {% include 'startpage/lien.html' with lien=lien %}
+                {% include 'startpage/lien-ctrl.html' with lien=lien %}
                 {% endfor %}
         </div>
 

@@ -40,7 +40,7 @@ def add_lien(request):
                                emplacement=emplacement
                                )
     
-    return render(request, 'startpage/lien.html', context={'lien': lien})
+    return render(request, 'startpage/lien-ctrl.html', context={'lien': lien})
 
 
 def delete_lien(request, lien_pk):
@@ -89,3 +89,20 @@ def move_lien_down(request, lien_pk):
 
     # On retourne toute la ligne mise à jour. (peut être moyen de faire mieux ?)
     return render(request, 'startpage/ligne.html', context={'ligne': ligne})
+
+
+def edit_lien(request, lien_pk):
+    lien = Lien.objects.get(pk=lien_pk)
+    return render(request, 'startpage/edit-lien.html', context={'lien': lien})
+
+
+def lien(request, lien_pk):
+    lien = Lien.objects.get(pk=lien_pk)
+        
+    # Si méthode est POST, on met à jour l'enregistrement, sinon (methode GET) on retourne sans mettre à jour
+    if request.method == 'POST':
+        lien.nom = escape(request.POST.get("nom-lien"))
+        lien.url = escape(request.POST.get("url-lien"))
+        lien.save()
+
+    return render(request, 'startpage/lien.html', context={'lien': lien})

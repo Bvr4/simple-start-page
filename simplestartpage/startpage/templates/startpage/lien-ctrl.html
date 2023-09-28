@@ -1,0 +1,22 @@
+<form>
+    {% csrf_token %}
+    {% include 'startpage/lien.html' with lien=lien %}
+    <button hx-post="{% url 'delete-lien' lien.pk %}"
+    hx-target="closest form"
+    hx-swap="outerHTML"
+    type="submit"> - </button>
+</form>
+<form>
+    {% csrf_token %}
+    <button hx-post="{% url 'move-lien-up' lien.pk %}"
+    hx-target="closest .container-ligne"
+    hx-swap="outerHTML"
+    type="submit">move up</button>
+</form>
+<form>
+    {% csrf_token %}
+    <button hx-post="{% url 'move-lien-down' lien.pk %}"
+    hx-target="closest .container-ligne"
+    hx-swap="outerHTML"
+    type="submit">move down</button>
+</form>
