@@ -121,9 +121,9 @@ def move_ligne_down(request, ligne_pk):
     return redirect('home')
 
 
-def edit_lien(request, lien_pk):
+def edit_lien_form(request, lien_pk):
     lien = Lien.objects.get(pk=lien_pk)
-    return render(request, 'startpage/edit-lien.html', context={'lien': lien})
+    return render(request, 'startpage/edit-lien-form.html', context={'lien': lien})
 
 
 def lien(request, lien_pk):
@@ -136,3 +136,13 @@ def lien(request, lien_pk):
         lien.save()
 
     return render(request, 'startpage/lien.html', context={'lien': lien})
+
+
+def add_lien_form(request, ligne_pk):
+    ligne = Ligne.objects.get(pk=ligne_pk)
+    return render(request, 'startpage/add-lien-form.html', context={'ligne': ligne})
+
+
+def add_lien_ctrl(request, ligne_pk):
+    ligne = Ligne.objects.get(pk=ligne_pk)
+    return render(request, 'startpage/add-lien-ctrl.html', context={'ligne': ligne})

@@ -12,7 +12,9 @@ urlpatterns = [
     path('move-lien-down/<int:lien_pk>', views.move_lien_down, name='move-lien-down'),
     path('move-ligne-up/<int:ligne_pk>', views.move_ligne_up, name='move-ligne-up'),
     path('move-ligne-down/<int:ligne_pk>', views.move_ligne_down, name='move-ligne-down'),
-    path('edit-lien/<int:lien_pk>', views.edit_lien, name='edit-lien'),
+    path('edit-lien-form/<int:lien_pk>', views.edit_lien_form, name='edit-lien-form'),
     path('lien/<int:lien_pk>', views.lien, name='lien'),
+    path('add-lien-form/<int:ligne_pk>', views.add_lien_form, name='add-lien-form'),
+    path('add-lien-ctrl/<int:ligne_pk>', views.add_lien_ctrl, name='add-lien-ctrl'),
     path('admin/', admin.site.urls),
 ]

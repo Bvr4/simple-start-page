@@ -1,0 +1,22 @@
+<form method="POST">
+    {% csrf_token %}
+
+    <input  type="hidden" 
+            name="id-ligne" 
+            value="{{ ligne.ligne_id }}">
+    <input  type="text" 
+            name="nom-lien" 
+            placeholder="Nom">
+    <input  type="text" 
+            name="url-lien" 
+            placeholder="URL">
+    <button hx-post="{% url 'add-lien' %}"
+            hx-target="#liens-{{ ligne.emplacement }}"
+            hx-swap="beforeend"
+            type="submit">Ajouter lien
+    </button>
+    <button hx-get="/add-lien-ctrl/{{ ligne.pk }}"
+            hx-target="#add-lien-{{ ligne.pk }}"
+            hx-swap="outerHTML">Cancel
+    </button>
+</form>

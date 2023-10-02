@@ -1,0 +1,17 @@
+body {
+    background-color : lightseagreen;
+}
+
+.container-ligne {
+    border: solid 1px;
+    margin: 10px;
+}
+
+.container-lien {
+    border: solid 1px;
+    display: inline-block;
+}
+
+.lien {
+    padding-left: 10px;
+}

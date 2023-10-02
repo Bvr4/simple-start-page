@@ -1,8 +1,8 @@
-<div hx-target="this" hx-swap="outerHTML">
+<div hx-target="this" hx-swap="outerHTML" class="lien">
     <form>
         {% csrf_token %}
         <a href="{{ lien.url }}">{{ lien.nom }}</a>
-        <button hx-get="/edit-lien/{{ lien.pk }}" class="btn btn-primary">
+        <button hx-get="/edit-lien-form/{{ lien.pk }}">
         Edit
         </button>
     </form>

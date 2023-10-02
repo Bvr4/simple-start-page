@@ -24,3 +24,5 @@ Ce projet me permet de tester la création de site via django, ainsi que la bibl
 
 ## TODO : 
 [] front end
+[] possiblité de changer les couleurs d'affichage
+[] gestion des utilisateurs ?
