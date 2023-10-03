@@ -40,7 +40,7 @@ def add_lien(request):
                                emplacement=emplacement
                                )
     
-    return render(request, 'startpage/lien-ctrl.html', context={'lien': lien})
+    return render(request, 'startpage/lien.html', context={'lien': lien})
 
 
 def delete_lien(request, lien_pk):

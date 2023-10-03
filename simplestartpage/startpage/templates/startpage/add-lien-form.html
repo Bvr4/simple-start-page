@@ -1,22 +1,36 @@
-<form method="POST">
-    {% csrf_token %}
 
-    <input  type="hidden" 
+<div id="modal" _="on closeModal add .closing then wait for animationend then remove me">
+	<div class="modal-underlay" _="on click trigger closeModal"></div>
+	<div class="modal-content">
+        <form method="POST">
+            {% csrf_token %}
+
+            <input  type="hidden" 
             name="id-ligne" 
             value="{{ ligne.ligne_id }}">
-    <input  type="text" 
-            name="nom-lien" 
-            placeholder="Nom">
-    <input  type="text" 
-            name="url-lien" 
-            placeholder="URL">
-    <button hx-post="{% url 'add-lien' %}"
+            <div>
+                <label>Nom</label>
+                <input  type="text" 
+                name="nom-lien" 
+                placeholder="Nom">
+            </div>
+            <div>
+                <label>URL</label>
+                <input  type="text" 
+                name="url-lien" 
+                placeholder="URL">
+            </div>
+            <button hx-post="{% url 'add-lien' %}"
             hx-target="#liens-{{ ligne.emplacement }}"
             hx-swap="beforeend"
-            type="submit">Ajouter lien
-    </button>
-    <button hx-get="/add-lien-ctrl/{{ ligne.pk }}"
+            type="submit"
+            _="on click trigger closeModal">Ajouter lien
+            </button>
+            <button hx-get="/add-lien-ctrl/{{ ligne.pk }}"
             hx-target="#add-lien-{{ ligne.pk }}"
-            hx-swap="outerHTML">Cancel
-    </button>
-</form>
+            hx-swap="outerHTML"
+            _="on click trigger closeModal">Annuler
+            </button>
+        </form>
+	</div>
+</div>

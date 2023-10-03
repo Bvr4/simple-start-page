@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'startpage/style.css' %}"/>
     <!-- bibliothèque htmx -->
     <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
 </head>
 <body>
     
@@ -17,12 +18,13 @@
                 {% include 'startpage/ligne.html' with ligne=ligne %}
             {% endfor %}
         </div>
-        <form method="POST" class="d-flex gap-2">
+        <form method="POST">
             {% csrf_token %}
             <button hx-post="{% url 'add-ligne' %}"
                     hx-target="#lignes"
                     hx-swap="beforeend"
-                    type="submit">Ajouter une ligne
+                    type="submit"
+                    class="btn-img add-ligne"><img src="{% static 'startpage/img/plus-24.png' %}">
             </button>
         </form>
 

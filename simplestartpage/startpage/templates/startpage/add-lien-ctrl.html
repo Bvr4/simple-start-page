@@ -1,5 +1,7 @@
-<div hx-target="this" hx-swap="inerHTML" id="add-lien-{{ ligne.pk }}">
-    <button hx-get="/add-lien-form/{{ ligne.pk }}">
-            Ajouter lien
+{% load static %}
+<div id="add-lien-{{ ligne.pk }}">
+
+    <button hx-get="/add-lien-form/{{ ligne.pk }}" hx-target="body" hx-swap="beforeend" class="btn-img add-lien">
+        <img src="{% static 'startpage/img/plus.png' %}">
     </button>
 </div>    
