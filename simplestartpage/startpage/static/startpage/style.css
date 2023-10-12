@@ -6,11 +6,15 @@
 body {
     background-color : var(--main-bg-color);
     padding-top: 50px;
+    font-family: sans-serif;
 }
 
-/* >>>>> Checker FLEXBOX !!! */
+a {
+    text-decoration: none;
+}
+
 .container-ligne {
-    border: solid 1px;
+    /* border: solid 1px; */
     margin: 50px 0px;
     padding-left: 100px;
     display: flex;
@@ -22,29 +26,40 @@ body {
     width:         calc(100% - 100px);
     display: flex;
     justify-content: space-between;
-
 }
 
 .container-lien {    
-    flex: 4 1 auto;
+    flex: 1 1 0px;
     border: solid 1px;
     border-color: var(--main-text-color);
     border-radius: 5px;
-    padding: 10px;
+    color: var(--main-text-color);
+    padding: 0px;
     display: inline-flex;
-    min-width: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.container-lien:hover {   
+    background-color: var(--main-text-color);
+    color: var(--main-bg-color);
 }
 
 .lien {
-    padding: 10px;
-    padding-left: 20px;
+    padding: 5px;
+    padding-left: 98px;
     font-family: sans-serif;
     font-size: x-large;
     text-decoration: none;
     font-weight: bold;
-    color: var(--main-text-color);
+    /* color: var(--main-text-color); */
+    margin-left: auto;
+    margin-right: auto;
 }
 
+img {
+    filter: invert(1);
+}
 
 .btn-img { 
     margin-top: auto;
@@ -53,7 +68,7 @@ body {
     display: inline-flex;
     border-radius: 3px;
     border: 0px;
-    padding: 1px; 
+    padding: 3px; 
     background-color: transparent;
 }
 
@@ -77,36 +92,87 @@ body {
     margin-right: 10px;
 }
 
-.container-ctrl {
+.container-ctrl-ligne {
     flex: 1 1 auto;
     justify-content: flex-end;
     margin-top: auto;
     margin-bottom: auto;
     display: inline-flex;
     vertical-align: middle;
+    padding: 20px 5px;
+    opacity: 0;
 }
+
+.container-ctrl-ligne:hover {
+    opacity: 1;
+}
+
+.container-ctrl-lien {
+    flex: 0 1 auto;
+    justify-content: flex-end;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: inline-flex;
+    vertical-align: middle;
+    padding: 16px 5px;
+    opacity: 0;
+    border-radius: 5px;
+}
+
+.container-ctrl-lien:hover {
+    background-color: var(--main-bg-color);
+    opacity: 1;
+}
+
+.container-btn {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th  {
+    text-align: left;
+    font-weight: unset;
+}
+
+label {
+    margin-right: 20px;
+}
+
+input[type=text] {
+    padding: 5px 8px;
+    border: solid 1px;
+    border-color: lightgrey;
+    border-radius: 5px;
+    min-width: 400px;;
+}
+
 
 
 /***** MODAL DIALOG ****/
 #modal {
-	/* Underlay covers entire screen. */
-	position: fixed;
-	top:0px;
-	bottom: 0px;
-	left:0px;
-	right:0px;
-	background-color:rgba(0,0,0,0.5);
-	z-index:1000;
+    /* Underlay covers entire screen. */
+    position: fixed;
+    top:0px;
+    bottom: 0px;
+    left:0px;
+    right:0px;
+    background-color:rgba(0,0,0,0.5);
+    z-index:1000;
 
-	/* Flexbox centers the .modal-content vertically and horizontally */
-	display:flex;
-	flex-direction:column;
-	align-items:center;
+    /* Flexbox centers the .modal-content vertically and horizontally */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 
-	/* Animate when opening */
-	animation-name: fadeIn;
-	animation-duration:150ms;
-	animation-timing-function: ease;
+    /* Animate when opening */
+    animation-name: fadeIn;
+    animation-duration:150ms;
+    animation-timing-function: ease;
 }
 
 #modal > .modal-underlay {
@@ -174,3 +240,65 @@ body {
 	0% {transform: scale(1);}
 	100% {transform: scale(0.9);}
 } 
+
+
+.btn {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    margin-top: 10px;
+    margin-right: 10%;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    min-width: 35%;
+}
+
+.btn:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.btn:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+}
+
+.btn:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+.btn:focus {
+    outline: 1px transparent;
+}
+
+.btn:before {
+    display: none;
+}
+
+.btn:-webkit-details-marker {
+    display: none;
+}
+

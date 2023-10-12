@@ -8,29 +8,44 @@
             <input  type="hidden" 
             name="id-ligne" 
             value="{{ ligne.ligne_id }}">
-            <div>
-                <label>Nom</label>
-                <input  type="text" 
-                name="nom-lien" 
-                placeholder="Nom">
-            </div>
-            <div>
-                <label>URL</label>
-                <input  type="text" 
-                name="url-lien" 
-                placeholder="URL">
-            </div>
+            <table>                
+                <tr>
+                    <th>
+                        <label>Nom</label>
+                    </th>
+                    <th>
+                        <input  type="text" 
+                        name="nom-lien" 
+                        placeholder="Nom">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <label>URL</label>
+                    </th>
+                    <th>
+                        <input  type="text" 
+                        name="url-lien" 
+                        placeholder="URL">
+                    </th>
+                </tr>
+            </table>
+
+        <div class="container-btn">
             <button hx-post="{% url 'add-lien' %}"
             hx-target="#liens-{{ ligne.emplacement }}"
             hx-swap="beforeend"
             type="submit"
+            class="btn"
             _="on click trigger closeModal">Ajouter lien
             </button>
             <button hx-get="/add-lien-ctrl/{{ ligne.pk }}"
             hx-target="#add-lien-{{ ligne.pk }}"
             hx-swap="outerHTML"
+            class="btn"
             _="on click trigger closeModal">Annuler
             </button>
+        </div>
         </form>
 	</div>
 </div>

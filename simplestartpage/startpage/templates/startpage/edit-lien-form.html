@@ -4,21 +4,33 @@
 	<div class="modal-content">
     <form method="POST">
         {% csrf_token %}
-        <div>
-            <label>Nom</label>
-            <input type="text" name="nom-lien" value="{{ lien.nom }}">
-        </div>
-        <div class="form-group">
-            <label>URL</label>
-            <input type="text" name="url-lien" value="{{ lien.url }}">
-        </div>
-        <input type="button" value="Mettre à jour"
-        hx-post="/lien/{{ lien.pk }}" 
-        hx-target="#lien-{{ lien.pk }}" 
-        hx-swap="outerHTML"
-        _="on click trigger closeModal"></input>
-        <input type="button" value="Annuler" _="on click trigger closeModal"></input>
-                
+        <table>
+            <tr>
+                <th>
+                    <label>Nom</label>
+                </th>
+                <th>                
+                    <input type="text" name="nom-lien" value="{{ lien.nom }}">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label>URL</label>
+                </th>
+                <th>
+                    <input type="text" name="url-lien" value="{{ lien.url }}">
+                </th>
+            </tr>
+        </table>
+        <div class="container-btn">
+            <input type="button" value="Mettre à jour"
+            hx-post="/lien/{{ lien.pk }}" 
+            hx-target="#lien-{{ lien.pk }}" 
+            hx-swap="outerHTML"
+            class="btn"
+            _="on click trigger closeModal"></input>
+            <input type="button" value="Annuler" class="btn" _="on click trigger closeModal"></input>
+        </div>                
     </form>
 	</div>
 </div>

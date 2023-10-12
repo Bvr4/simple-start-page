@@ -1,33 +1,36 @@
 {% load static %}
-<div class="container-lien" id="lien-{{ lien.pk }}">
-    <form>
-        <div>
-            <a href="{{ lien.url }}" role="button" class="lien">{{ lien.nom }}</a>
+<a href="{{ lien.url }}"  class="container-lien" id="lien-{{ lien.pk }}">
+    <p class="lien">{{ lien.nom }}</p>
+    <div class="container-ctrl-lien">
+        <form>
+            {% csrf_token %}
             <button hx-get="/edit-lien-form/{{ lien.pk }}" hx-target="body" hx-swap="beforeend" class="btn-img">
                 <img src="{% static 'startpage/img/modifier.png' %}">
             </button>
-        </div>
-        {% csrf_token %}
-        <button hx-post="{% url 'delete-lien' lien.pk %}"
-        hx-target="closest .container-lien"
-        hx-swap="outerHTML"
-        type="submit"
-        class="btn-img"><img src="{% static 'startpage/img/supprimer.png' %}"></button>
-    </form>
-    <form>
-        {% csrf_token %}
-        <button hx-post="{% url 'move-lien-up' lien.pk %}"
-        hx-target="closest .container-ligne"
-        hx-swap="outerHTML"
-        type="submit"
-        class="btn-img"><img src="{% static 'startpage/img/fleche-vers-la-gauche.png' %}"></button>
-    </form>
-    <form>
-        {% csrf_token %}
-        <button hx-post="{% url 'move-lien-down' lien.pk %}"
-        hx-target="closest .container-ligne"
-        hx-swap="outerHTML"
-        type="submit"
-        class="btn-img"><img src="{% static 'startpage/img/fleche-vers-la-droite.png' %}"></button>
-    </form>
-</div>
+        </form>
+        <form>
+            {% csrf_token %}
+            <button hx-post="{% url 'move-lien-up' lien.pk %}"
+            hx-target="closest .container-ligne"
+            hx-swap="outerHTML"
+            type="submit"
+            class="btn-img"><img src="{% static 'startpage/img/fleche-vers-la-gauche.png' %}"></button>
+        </form>
+        <form>
+            {% csrf_token %}
+            <button hx-post="{% url 'move-lien-down' lien.pk %}"
+            hx-target="closest .container-ligne"
+            hx-swap="outerHTML"
+            type="submit"
+            class="btn-img"><img src="{% static 'startpage/img/fleche-vers-la-droite.png' %}"></button>
+        </form>
+        <form>
+            {% csrf_token %}
+            <button hx-post="{% url 'delete-lien' lien.pk %}"
+            hx-target="closest .container-lien"
+            hx-swap="outerHTML"
+            type="submit"
+            class="btn-img"><img src="{% static 'startpage/img/supprimer.png' %}"></button>
+        </form>
+    </div>
+</a>

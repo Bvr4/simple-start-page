@@ -1,26 +1,26 @@
 {% load static %}
 <div class="container-ligne">
-        <div id="liens-{{ ligne.emplacement }}" class="container-liens">
-                {% for lien in ligne.lien_set.all|dictsort:"emplacement" %}
-                {% include 'startpage/lien.html' with lien=lien %}
-                {% endfor %}
-        </div>
+    <div id="liens-{{ ligne.emplacement }}" class="container-liens">
+            {% for lien in ligne.lien_set.all|dictsort:"emplacement" %}
+            {% include 'startpage/lien.html' with lien=lien %}
+            {% endfor %}
+    </div>
 
-        <div class="container-ctrl">
-        {% include 'startpage/add-lien-ctrl.html' with ligne=ligne %}            
+    <div class="container-ctrl-ligne">
+    {% include 'startpage/add-lien-ctrl.html' with ligne=ligne %}            
 
-                <button class="btn-img"><a href="{% url 'move-ligne-up' ligne.pk %}"><img src="{% static 'startpage/img/fleche-vers-le-haut.png' %}"></a></button>
-                <button class="btn-img"><a href="{% url 'move-ligne-down' ligne.pk %}"><img src="{% static 'startpage/img/fleche-vers-le-bas.png' %}"></a></button>
-                <form>
-                        {% csrf_token %}
-                        <button hx-post="{% url 'delete-ligne' ligne.pk %}"
-                        hx-target="closest .container-ligne"
-                        hx-swap="outerHTML"
-                        hx-confirm="Êtes vous sûr de vouloir supprimer la ligne ?"
-                        type="submit"
-                        class="btn-img"><img src="{% static 'startpage/img/supprimer.png' %}"></button>
-                </form>
-        </div>
+        <button class="btn-img"><a href="{% url 'move-ligne-up' ligne.pk %}"><img src="{% static 'startpage/img/fleche-vers-le-haut.png' %}"></a></button>
+        <button class="btn-img"><a href="{% url 'move-ligne-down' ligne.pk %}"><img src="{% static 'startpage/img/fleche-vers-le-bas.png' %}"></a></button>
+        <form>
+            {% csrf_token %}
+            <button hx-post="{% url 'delete-ligne' ligne.pk %}"
+            hx-target="closest .container-ligne"
+            hx-swap="outerHTML"
+            hx-confirm="Êtes vous sûr de vouloir supprimer la ligne ?"
+            type="submit"
+            class="btn-img"><img src="{% static 'startpage/img/supprimer.png' %}"></button>
+        </form>
+    </div>
 
 
 </div>
