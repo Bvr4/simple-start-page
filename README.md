@@ -23,6 +23,7 @@ Ce projet me permet de tester la création de site via django, ainsi que la bibl
 [x] Changer l'ordre des lignes (changer emplacement)
 
 ## TODO : 
-[] front end
+[x] front end
+[] responsive design
 [] possiblité de changer les couleurs d'affichage
 [] gestion des utilisateurs ?

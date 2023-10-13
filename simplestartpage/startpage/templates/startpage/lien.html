@@ -29,6 +29,7 @@
             <button hx-post="{% url 'delete-lien' lien.pk %}"
             hx-target="closest .container-lien"
             hx-swap="outerHTML"
+            hx-confirm="Êtes vous sûr de vouloir supprimer la ligne ?"
             type="submit"
             class="btn-img"><img src="{% static 'startpage/img/supprimer.png' %}"></button>
         </form>
